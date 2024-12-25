@@ -1,6 +1,8 @@
 # BankingSystemProject
 This project was assigned by our 1st semester teacher in Programming Fundamentals Practical Course.
+
 Features and Functionalities
+
 The project includes the following core features:
 1. Account Creation
 •	Users can create a new account by providing an account number, username, password, and an initial balance.
