@@ -3,7 +3,8 @@
 #include <string>
 using namespace std;
 
-class Account {
+class Account 
+{
 public:
     string accountNumber;
     string username;
@@ -14,45 +15,62 @@ public:
     Account(string accNo, string user, string pass, double initialBalance)
         : accountNumber(accNo), username(user), password(pass), balance(initialBalance) {}
 
-    void deposit(double amount) {
-        if (amount > 0) {
+    void deposit(double amount) 
+    {
+        if (amount > 0) 
+        {
             balance += amount;
             transactionHistory.push_back("Deposited: $" + to_string(amount));
             cout << "Deposit successful.\n";
-        } else {
+        } 
+        else 
+        {
             cout << "Invalid deposit amount.\n";
         }
     }
 
-    void withdraw(double amount) {
-        if (amount > 0 && amount <= balance) {
+    void withdraw(double amount) 
+    {
+        if (amount > 0 && amount <= balance) 
+        {
             balance -= amount;
             transactionHistory.push_back("Withdrew: $" + to_string(amount));
             cout << "Withdrawal successful.\n";
-        } else {
+        } 
+        else 
+        {
             cout << "Invalid withdrawal amount or insufficient balance.\n";
         }
     }
 
-    void displayTransactions() {
-        if (transactionHistory.empty()) {
+    void displayTransactions() 
+    {
+        if (transactionHistory.empty()) 
+        {
             cout << "No transactions yet.\n";
-        } else {
+        } 
+        else 
+        {
             cout << "Transaction History:\n";
-            for (size_t i = 0; i < transactionHistory.size(); i++) {
+            for (size_t i = 0; i < transactionHistory.size(); i++) 
+            {
                 cout << transactionHistory[i] << endl;
             }
         }
     }
 };
 
-class BankingSystem {
+class BankingSystem 
+{
 private:
     vector<Account> accounts;
 
-    int findAccountIndex(const string& accNo) {
-        for (size_t i = 0; i < accounts.size(); i++) {
-            if (accounts[i].accountNumber == accNo) {
+    int findAccountIndex(const string& accNo) 
+    {
+        for (size_t i = 0; i < accounts.size(); i++) 
+        {
+            if (accounts[i].accountNumber == accNo) 
+            {
                 return i;
             }
         }
@@ -60,7 +78,8 @@ private:
     }
 
 public:
-    void createAccount() {
+    void createAccount() 
+    {
         string accNo, user, pass;
         double initialBalance;
         cout << "Enter account number: ";
@@ -72,65 +91,85 @@ public:
         cout << "Enter initial balance: ";
         cin >> initialBalance;
 
-        if (findAccountIndex(accNo) == -1) {
+        if (findAccountIndex(accNo) == -1) 
+        {
             accounts.push_back(Account(accNo, user, pass, initialBalance));
             cout << "Account created successfully.\n";
-        } else {
+        } 
+        else 
+        {
             cout << "Account number already exists.\n";
         }
     }
 
-    void depositToAccount() {
+    void depositToAccount() 
+    {
         string accNo;
         double amount;
         cout << "Enter account number: ";
         cin >> accNo;
 
         int index = findAccountIndex(accNo);
-        if (index != -1) {
+        if (index != -1) 
+        {
             cout << "Enter deposit amount: ";
             cin >> amount;
             accounts[index].deposit(amount);
-        } else {
+        }
+        else 
+        {
             cout << "Account not found.\n";
         }
     }
 
-    void withdrawFromAccount() {
+    void withdrawFromAccount() 
+    {
         string accNo;
         double amount;
         cout << "Enter account number: ";
         cin >> accNo;
 
         int index = findAccountIndex(accNo);
-        if (index != -1) {
+        if (index != -1) 
+        {
             cout << "Enter withdrawal amount: ";
             cin >> amount;
             accounts[index].withdraw(amount);
-        } else {
+        } 
+        else 
+        {
             cout << "Account not found.\n";
         }
     }
 
-    void viewAccountTransactions() {
+    void viewAccountTransactions() 
+    {
         string accNo;
         cout << "Enter account number: ";
         cin >> accNo;
 
         int index = findAccountIndex(accNo);
-        if (index != -1) {
+        if (index != -1) 
+        {
             accounts[index].displayTransactions();
-        } else {
+        } 
+        else 
+        {
             cout << "Account not found.\n";
         }
     }
 
-    void displayAccounts() {
-        if (accounts.empty()) {
+    void displayAccounts() 
+    {
+        if (accounts.empty()) 
+        {
             cout << "No accounts available.\n";
-        } else {
+        } 
+        else 
+        {
             cout << "Accounts:\n";
-            for (size_t i = 0; i < accounts.size(); i++) {
+            for (size_t i = 0; i < accounts.size(); i++) 
+            {
                 cout << "Account Number: " << accounts[i].accountNumber
                      << ", Username: " << accounts[i].username
                      << ", Balance: $" << accounts[i].balance << endl;
@@ -139,12 +178,13 @@ public:
     }
 };
 
-// Main function
-int main() {
+int main() 
+{
     BankingSystem bank;
     int choice;
 
-    do {
+    do 
+    {
         cout << "\n=== Banking System Menu ===\n";
         cout << "1. Create Account\n";
         cout << "2. Deposit to Account\n";
@@ -155,7 +195,8 @@ int main() {
         cout << "Enter your choice: ";
         cin >> choice;
 
-        switch (choice) {
+        switch (choice) 
+        {
             case 1:
                 bank.createAccount();
                 break;
